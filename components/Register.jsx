@@ -31,7 +31,9 @@ const Register = () => {
             });
 
             if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
+                const errorMessage = `HTTP Error: ${res.status} - ${res.statusText}`;
+                console.error("[REGISTERING_USER_CLIENT]:", errorMessage);
+                throw new Error(errorMessage);
             }
 
             const data = await res.json();
